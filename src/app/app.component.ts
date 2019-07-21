@@ -34,7 +34,8 @@ export class AppComponent {
             let data=read.result.toString();
             console.log("Data de archivo:",data);
             let linesAll = data.split("\n");
-            let lines=linesAll.map((e) => e.substring(2, e.length-1));
+            console.log("Todas las lineas",linesAll);
+            let lines=linesAll.map((e) => e.substring(2, e.length-2));
             console.log("Lineas: ",lines);
             this.datainfo = lines.map( (line) => {
             //  let lin=line.toString();
