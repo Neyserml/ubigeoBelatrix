@@ -1,21 +1,88 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+
+<div class="container">
+    <h4 style="text-align:center">Ubigeo</h4>
+      <div class="center">
+        <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)" 
+        (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+            <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+             Seleccione o arrastre archivo plano aqui
+             <br>
+             <button type="button" (click)="openFileSelector()" class="btn btn-info">Seleccionar</button>
+            </ng-template>
+        </ngx-file-drop>
+        <div class="upload-table">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nombre de archivo cargado</th>
+                    </tr>
+                </thead>
+                <tbody class="upload-name-style">
+                    <tr *ngFor="let item of files; let i=index">
+                        <td>{{ item.relativePath }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+      </div>
+      <h4 style="text-align:center">Departamentos</h4>
+      <table class="table table-bordered table-sm">
+        <thead>
+            <tr>
+                <th scope="col">Código</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Código Padre</th>
+                <th scope="col">Descripcion Padre</th>
+              </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let depa of listDepa" >
+                <td > {{depa.codigo}}</td>
+                <td > {{depa.nombre}}</td>
+                <td > {{depa.codpadre}}</td>
+                <td > {{depa.despadre}}</td>
+              </tr>
+        </tbody>     
+      </table>
+      <h4 style="text-align:center">Provincias</h4>
+      <table class="table table-bordered table-sm">
+          <thead>
+              <tr>
+                <th scope="col">Código</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Código Padre</th>
+                <th scope="col">Descripcion Padre</th>
+                </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let pro of listProv" >
+                  <td> {{pro.codigo}}</td>
+                  <td> {{pro.nombre}}</td>
+                  <td> {{pro.codpadre}}</td>
+                  <td> {{pro.despadre}}</td>
+                </tr>
+          </tbody>
+      </table>
+      
+      <h4 style="text-align:center">Distritos</h4>
+      <table class="table table-bordered table-sm">
+          <thead>
+              <tr>
+                <th scope="col">Código</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Código Padre</th>
+                <th scope="col">Descripcion Padre</th>
+                </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let dist of listDist" >
+                  <td> {{dist.codigo}}</td>
+                  <td> {{dist.nombre}}</td>
+                  <td> {{dist.codpadre}}</td>
+                  <td> {{dist.despadre}}</td>
+                </tr>
+          </tbody>
+      </table>
+    </div>
 
 <router-outlet></router-outlet>
